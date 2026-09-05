@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8" />
     <title>HyperEngine Test</title>
     <style>
-        body { margin: 0; overflow: hidden; }
+        body { margin: 0; overflow: hidden; background-color: #111; }
         canvas { width: 100vw; height: 100vh; display: block; }
     </style>
 </head>
 <body>
     <canvas id="gameCanvas"></canvas>
 
-    <script src="hyperEngine.js"></script>
-    <script>
+    <!-- Load gl-matrix from CDN first -->
+    <script type="module">
+        import * as glMatrix from "https://cdn.jsdelivr.net/npm/gl-matrix@3.4.3/esm/index.js";
+        window.glMatrix = glMatrix;
+    </script>
+
+    <!-- Then load your engine -->
+    <script type="module">
+        import HyperEngine from "./hyperEngine.js";
+
         const canvas = document.getElementById("gameCanvas");
         const engine = new HyperEngine(canvas);
         engine.start();
+
+        canvas.addEventListener("click", () => {
+            canvas.requestPointerLock();
+        });
     </script>
 </body>
 </html>
