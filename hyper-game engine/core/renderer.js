@@ -4,7 +4,7 @@ export default class Renderer {
     constructor(gl) {
         this.gl = gl;
         this.viewLocation = null;
-        gl.clearColor(0.1, 0.1, 0.1, 1);
+        gl.clearColor(0.1, 0.1, 0.1, 1.0);
     }
 
     setViewUniformLocation(location) {
